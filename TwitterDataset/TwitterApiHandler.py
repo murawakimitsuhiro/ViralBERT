@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from searchtweets import collect_results, load_credentials, gen_request_parameters
 import requests
 import os
@@ -79,7 +79,7 @@ class TwitterApiHandler:
         if max_tweets > tweet_no:
             max_tweets = tweet_no
         for _ in range(0, tweet_no, max_tweets):
-            end_time = end_time.strftime("%Y%m%d%H%M")
+            end_time = end_time.astimezone(timezone.utc).strftime("%Y%m%d%H%M")
             query = gen_request_parameters(
                 f"{self.query} lang:en -is:retweet",
                 granularity=None,

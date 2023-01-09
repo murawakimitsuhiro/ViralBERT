@@ -7,7 +7,7 @@ if __name__ == '__main__':
     # change range to amount of days of dataset to fetch
     for dataset_no in range(1,10):
         print(f"Fetching dataset {dataset_no}")
-        twitterDataset = TwitterDataset(timedelt=interval, threads=2, dataset_dir=f"./dataset{dataset_no}")
+        twitterDataset = TwitterDataset(timedelt=interval, threads=4, dataset_dir=f"./dataset{dataset_no}")
         topics = twitterDataset.load_topics()
         # twitterDataset.set_threads(len(topics))
         twitterDataset.init_api_handlers()
